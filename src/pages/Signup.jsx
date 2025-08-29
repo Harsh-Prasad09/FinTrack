@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { User, Mail, Lock } from 'lucide-react'
 
 export default function Signup() {
@@ -16,7 +16,14 @@ export default function Signup() {
     navigate('/', { replace: true, state: { showLogin: true } })
   }
 
+  const location = useLocation()
   function handleClose() {
+    // If this modal was opened via landing page state, clear that state so landing stops rendering it.
+    if (location && location.state && location.state.showSignup) {
+      navigate('/', { replace: true, state: {} })
+      return
+    }
+
     if (window.history.length > 1) navigate(-1)
     else navigate('/')
   }

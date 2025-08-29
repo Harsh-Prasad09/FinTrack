@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { supabase } from '../lib/supabaseClient'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { Mail, Lock } from 'lucide-react'
 
 export default function Login(){
@@ -13,7 +13,13 @@ export default function Login(){
     navigate('/', { replace: true, state: { showSignup: true } })
   }
 
+  const location = useLocation()
   function handleClose(){
+    if (location && location.state && location.state.showLogin){
+      navigate('/', { replace: true, state: {} })
+      return
+    }
+
     if (window.history.length > 1) navigate(-1)
     else navigate('/')
   }

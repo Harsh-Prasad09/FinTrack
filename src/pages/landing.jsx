@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Wallet, TrendingUp, Activity } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
 import Login from './Login'
@@ -9,6 +9,10 @@ import Signup from './Signup'
 
 export default function Landing() {
   const location = useLocation()
+  const navigate = useNavigate()
+  function openSignupOnLanding() {
+    navigate('/', { replace: true, state: { showSignup: true } })
+  }
   const showLogin = !!(location && location.state && location.state.showLogin)
   const showSignup = !!(location && location.state && location.state.showSignup)
   return (
@@ -37,15 +41,16 @@ export default function Landing() {
                 </div>
 
                   <div className="flex flex-col sm:flex-row items-center justify-start sm:justify-center gap-4">
-                    <Link 
-                      to="/signup"
+                    <button
+                      type="button"
+                      onClick={openSignupOnLanding}
                       className="group inline-flex items-center w-full sm:w-auto justify-center px-10 py-5 text-lg rounded-xl bg-slate-900 text-white font-semibold hover:bg-slate-800 transform hover:scale-105 transition-all duration-200 shadow-xl hover:shadow-2xl"
                     >
                       Try FinTrack
                       <svg className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
-                    </Link>
+                    </button>
                   </div>
               </div>
 
@@ -165,15 +170,16 @@ export default function Landing() {
               Join thousands of users who have simplified their financial lives with FinTrack.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link 
-                to="/signup"
+              <button
+                type="button"
+                onClick={openSignupOnLanding}
                 className="group inline-flex items-center px-8 py-4 rounded-xl bg-white text-slate-900 font-semibold hover:bg-slate-100 transform hover:scale-105 transition-all duration-200 shadow-xl"
               >
                 Start Your Free Journey
                 <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
+              </button>
             </div>
             <div className="flex items-center justify-center gap-6 text-slate-400 text-sm">
               <div className="flex items-center gap-2">

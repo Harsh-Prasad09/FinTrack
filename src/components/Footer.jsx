@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="w-full text-right lg:text-right text-left">
             <h3 className="text-lg font-semibold text-gray-900 pb-3">Quick Links</h3>
             <div className="space-y-3">
-              <a href="/" className="flex items-center justify-end space-x-2 text-gray-700 hover:text-orange-600">
+              <a href="#"  className="flex items-center justify-end space-x-2 text-gray-700 hover:text-orange-600 transition-colors duration-200 ease-in-out">
                 <span>Home</span>
                 <Home className="w-4 h-4" />
               </a>
@@ -33,7 +33,7 @@ export default function Footer() {
                 <span>Contact Us</span>
                 <Phone className="w-4 h-4" />
               </a>
-              <a href="https://github.com/Harsh-Prasad09/CoinTrackr" target="_blank" rel="noreferrer" className="flex items-center justify-end space-x-2 text-gray-700 hover:text-orange-600">
+              <a href="https://github.com/Harsh-Prasad09/FinTrack" target="_blank" rel="noreferrer" className="flex items-center justify-end space-x-2 text-gray-700 hover:text-orange-600">
                 <span>GitHub</span>
                 <Github className="w-4 h-4" />
               </a>
