@@ -9,6 +9,9 @@ export default function Login(){
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const navigate = useNavigate()
+  function openSignupOnLanding(){
+    navigate('/', { replace: true, state: { showSignup: true } })
+  }
 
   function handleClose(){
     if (window.history.length > 1) navigate(-1)
@@ -146,12 +149,13 @@ export default function Login(){
           <div className="mt-6 pt-6 border-t border-gray-100">
             <p className="text-center text-gray-600">
               Don't have an account?{' '}
-              <Link 
-                to="/signup" 
+              <button 
+                type="button"
+                onClick={openSignupOnLanding}
                 className="font-semibold text-orange-600 hover:text-orange-500 transition-colors duration-200"
               >
                 Create one now
-              </Link>
+              </button>
             </p>
           </div>
         </div>

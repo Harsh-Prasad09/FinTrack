@@ -3,8 +3,14 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 import { Wallet, TrendingUp, Activity } from 'lucide-react'
+import { useLocation } from 'react-router-dom'
+import Login from './Login'
+import Signup from './Signup'
 
 export default function Landing() {
+  const location = useLocation()
+  const showLogin = !!(location && location.state && location.state.showLogin)
+  const showSignup = !!(location && location.state && location.state.showSignup)
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-orange-50 to-amber-50">
       <Header />
@@ -192,7 +198,9 @@ export default function Landing() {
           </div>
         </section>
         </main>
-      <Footer />
+  <Footer />
+  {showLogin && <Login />}
+  {showSignup && <Signup />}
     </div>
   )
 }

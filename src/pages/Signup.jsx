@@ -11,6 +11,10 @@ export default function Signup() {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  function openLoginOnLanding() {
+    // replace current history entry (signup) with landing + state so closing login returns to landing
+    navigate('/', { replace: true, state: { showLogin: true } })
+  }
 
   function handleClose() {
     if (window.history.length > 1) navigate(-1)
@@ -176,12 +180,13 @@ export default function Signup() {
           <div className="mt-6 pt-6 border-t border-gray-100">
             <p className="text-center text-gray-600">
               Already have an account?{' '}
-              <Link 
-                to="/login" 
+              <button
+                type="button"
+                onClick={openLoginOnLanding}
                 className="font-semibold text-orange-600 hover:text-orange-500 transition-colors duration-200"
               >
                 Sign in instead
-              </Link>
+              </button>
             </p>
           </div>
         </div>
