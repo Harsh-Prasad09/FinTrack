@@ -78,7 +78,7 @@ export default function Header() {
                 state={{ background: location }}
                 className="px-5 py-2.5 rounded-lg text-sm font-medium bg-slate-900 text-white hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl"
               >
-                Sign In
+                Sign Up
               </Link>
             </div>
           )}
